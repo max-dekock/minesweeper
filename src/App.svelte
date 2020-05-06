@@ -1,13 +1,28 @@
 <script>
 	import Minesweeper from './Minesweeper.svelte'
+
+	let rows = 9;
+	let cols = 9
+	let numMines = 10;
+
+	function resize(r, c, m) {
+		rows = r;
+		cols = c;
+		numMines = m;
+	}
 </script>
 
 <main>
-	<Minesweeper rows={9} cols={9} numMines={10} />
+	<Minesweeper bind:rows={rows} bind:cols={cols} bind:numMines={numMines} />
+
+	<button on:click={() => resize(9, 9, 10)}>Beginner</button>
+	<button on:click={() => resize(16, 16, 40)}>Intermediate</button>
+	<button on:click={() => resize(16, 30, 99)}>Expert</button>
+
 </main>
 
 <footer>
-	<a href="">Source</a>
+	<a href="https://github.com/willowdekock/minesweeper">Source</a>
 </footer>
 
 <style>

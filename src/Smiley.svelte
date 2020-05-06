@@ -19,7 +19,7 @@
 
 <style>
     .smiley {
-        font-size: 72px;
+        font-size: 64px;
         padding: 5px;
     }
 </style>

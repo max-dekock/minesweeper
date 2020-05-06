@@ -59,6 +59,10 @@
         return Array(string.length < 3 ? 4 - string.length : 0).join('0') + string;
     }
 
+    $: if (rows !== mf.rows || cols !== mf.cols || numMines !== mf.numMines) {
+        reset();
+    }
+
     $: finished = ms.isLost(surf) || ms.isWon(surf);
     $: status = ms.isLost(surf) ? 'lose' : ms.isWon(surf) ? 'win' : 'default';
     $: if (finished && finishTime === null) {
@@ -105,7 +109,7 @@
 <style>
     .minesweeper {
         width: max-content;
-        margin: auto;
+        margin: 25px auto;
     }
     .minefield {
         cursor: default;
@@ -116,8 +120,8 @@
     }
     .minefield-cell {
         border: 1px solid black;
-        width: 2em;
-        height: 2em;
+        width: 1.5em;
+        height: 1.5em;
     }
     .status-bar {
         display: flex;
@@ -130,7 +134,7 @@
     }
     .indicator-num {
         font-family: "Lucida Console", Monaco, monospace;
-        font-size: 72px;
+        font-size: 64px;
         color: gray;
         height: max-content;
         width: max-content;
